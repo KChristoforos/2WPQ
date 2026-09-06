@@ -78,6 +78,55 @@
       // the canvas DOM size and WebGL render target sizes yourself.
       // config.matchWebGLToCanvasSize = false;
 
+
+      function resizeUnityContainer() {
+        const viewport = window.visualViewport;
+        const vw = viewport ? viewport.width : window.innerWidth;
+        const vh = viewport ? viewport.height : window.innerHeight;
+
+        const targetRatio = 9 / 16;
+        const viewportRatio = vw / vh;
+
+        let width, height;
+
+        if (viewportRatio > targetRatio) {
+          // Viewport is wider than 9:16: fit by height.
+          height = vh;
+          width = height * targetRatio;
+        } else {
+          // Viewport is narrower/taller than 9:16: fit by width.
+          width = vw;
+          height = width / targetRatio;
+        }
+
+        // Desktop/tablet: leave a small breathing room around the portrait app.
+        const isDesktopLike = vw >= 768;
+        if (isDesktopLike) {
+          const maxHeight = Math.max(0, vh - 24);
+          const maxWidth = Math.max(0, vw - 24);
+
+          height = Math.min(height, maxHeight, 1920);
+          width = height * targetRatio;
+
+          if (width > maxWidth) {
+            width = Math.min(maxWidth, 1080);
+            height = width / targetRatio;
+          }
+        }
+
+        container.style.width = Math.floor(width) + "px";
+        container.style.height = Math.floor(height) + "px";
+      }
+
+      resizeUnityContainer();
+      window.addEventListener("resize", resizeUnityContainer);
+      window.addEventListener("orientationchange", function () {
+        setTimeout(resizeUnityContainer, 150);
+      });
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", resizeUnityContainer);
+      }
+
       loadingBar.style.display = "block";
 
       var script = document.createElement("script");
