@@ -7,6 +7,53 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <link rel="manifest" href="manifest.webmanifest">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#231F20">
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #231F20;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #unity-container {
+        position: fixed !important;
+        inset: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow: hidden !important;
+        background: #231F20;
+      }
+
+      #unity-canvas {
+        position: static !important;
+        display: block !important;
+        width: min(100vw, calc(100vh * 9 / 16)) !important;
+        height: min(100vh, calc(100vw * 16 / 9)) !important;
+        max-width: 100vw !important;
+        max-height: 100vh !important;
+        background: #231F20;
+      }
+
+      #unity-loading-bar {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+      }
+    </style>
   </head>
   <body>
     <div id="unity-container">
@@ -57,12 +104,12 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/22WEBAPP06092026.loader.js";
+      var loaderUrl = buildUrl + "/2WEBAPP220826.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/22WEBAPP06092026.data.unityweb",
-        frameworkUrl: buildUrl + "/22WEBAPP06092026.framework.js.unityweb",
-        codeUrl: buildUrl + "/22WEBAPP06092026.wasm.unityweb",
+        dataUrl: buildUrl + "/2WEBAPP220826.data.unityweb",
+        frameworkUrl: buildUrl + "/2WEBAPP220826.framework.js.unityweb",
+        codeUrl: buildUrl + "/2WEBAPP220826.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Psycho Quest",
@@ -76,15 +123,6 @@
       // happening inside the engine, and you would instead like to size up
       // the canvas DOM size and WebGL render target sizes yourself.
       // config.matchWebGLToCanvasSize = false;
-
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
-      }
-
 
       loadingBar.style.display = "block";
 
