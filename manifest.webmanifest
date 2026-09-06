@@ -1,15 +1,25 @@
 {
-    "name": "Psycho Quest",
-    "short_name": "Psycho Quest",
-    "start_url": "index.html",
-    "display": "fullscreen",
-    "background_color": "#231F20",
-    "theme_color": "#000",
-    "description": "Psycho Quest web application",
-    "icons": [{
-      "src": "TemplateData/icons/unity-logo-dark.png",
-      "sizes": "144x144",
+  "name": "Psycho Quest",
+  "short_name": "Psycho Quest",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "fullscreen",
+  "background_color": "#231F20",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "description": "Psycho Quest web application",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
-    }]
-  }
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
